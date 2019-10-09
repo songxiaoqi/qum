@@ -50,4 +50,17 @@ public class BackOrderController {
         return "更新失败";
 
     }
+
+    /**
+     * 后台处理订单（发货）
+     */
+    @RequestMapping(value="/sendDo",method = {RequestMethod.POST,RequestMethod.GET})
+    public Object sendDo(Order order){
+        Order order1 = orderService.selectOrderById(order.getOrderId());
+        if(null!=order1&&order1.getOrderState().equals(OrderStateEnum.ORDERSTATE_DEAL.getOrderState())){
+            return orderService.updateOrderStateById(order);
+        }
+        return "更新失败";
+
+    }
 }
