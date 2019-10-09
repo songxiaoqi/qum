@@ -3,7 +3,6 @@ package com.quming.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.quming.entity.Order;
-import com.quming.enums.OrderStateEnum;
 import com.quming.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
-import static com.sun.xml.internal.ws.api.message.Packet.State.ServerResponse;
 
 /**
  * author woson
