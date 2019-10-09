@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * author woson
  * date 2019/9/25
- * description
+ * description 前端首页
  */
 @RestController
 @RequestMapping("/quming")
