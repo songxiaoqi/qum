@@ -6,8 +6,9 @@ package com.quming.enums;
 public enum OrderStateEnum {
 
     ORDERSTATE_UNPAY(1,"待付款"),
-    ORDERSTATE_PAYED(2,"已付款"),
-    ORDERSTATE_SEND(3,"已发货");
+    ORDERSTATE_PAYED(5,"已付款"),
+    ORDERSTATE_DEAL(10,"已处理"),
+    ORDERSTATE_SEND(15,"已发货");
 
     private Integer orderState;
 

@@ -1,13 +1,14 @@
 package com.quming.controller;
-import	java.util.SortedSet;
 
 import com.quming.entity.Order;
-import com.sun.org.apache.xpath.internal.operations.Or;
+import com.quming.enums.OrderStateEnum;
+import com.quming.service.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * author woson
@@ -17,6 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @RequestMapping("/form")
 public class QumFormController {
+
+    private static final Logger logger = LoggerFactory.getLogger(QumFormController.class);
+
+
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping(value="/unborn",method = {RequestMethod.POST,RequestMethod.GET})
     public Object unborn(){
@@ -28,7 +35,10 @@ public class QumFormController {
 
     @RequestMapping(value="/born",method = {RequestMethod.POST,RequestMethod.GET})
     public Object born(Order order){
-        System.out.println(order.toString());
+        order.setOrderState(OrderStateEnum.ORDERSTATE_UNPAY.getOrderState());
+        orderService.insertOrder(order);
+        order = orderService.selectOrderById(order.getOrderId());
+        logger.info(order.toString());
         return order;
     }
 }

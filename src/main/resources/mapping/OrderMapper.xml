@@ -2,16 +2,55 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.quming.mapper.OrderMapper">
     <resultMap id="BaseResultMap" type="com.quming.entity.Order">
-        <id column="order_id" property="orderId" jdbcType="BIGINT"></id>
-        <result column="order_state" property="orderState" jdbcType="INTEGER"></result>
+        <id column="order_id" property="orderId" jdbcType="BIGINT"/>
+        <result column="order_state" property="orderState" jdbcType="INTEGER"/>
+        <result column="first_name" property="firstName" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+        <result column="born_address" property="bornAddress" jdbcType="VARCHAR"/>
+        <result column="father" property="father" jdbcType="VARCHAR"/>
+        <result column="mother" property="mother" jdbcType="VARCHAR"/>
+        <result column="brother_and_sister" property="brotherAndSister" jdbcType="VARCHAR"/>
+        <result column="name_num" property="nameNum" jdbcType="INTEGER"/>
+        <result column="display_word" property="displayWord" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="pay_time" property="payTime" jdbcType="TIMESTAMP"/>
+        <result column="send_time" property="sendTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="deal_time" property="dealTime" jdbcType="TIMESTAMP"/>
+        <result column="pay_amount" property="payAmount" jdbcType="DECIMAL"/>
+        <result column="cost_amount" property="costAmount" jdbcType="DECIMAL"/>
     </resultMap>
+    
     <sql id="Base_Column_List">
-        order_id ,order_state
+        order_id ,order_state,first_name ,sex ,birthday ,born_address ,father ,mother ,brother_and_sister ,
+        name_num ,display_word ,phone ,email ,create_time ,pay_time ,send_time ,update_time ,deal_time,
+        pay_amount, cost_amount
     </sql>
+
+    <insert id="insertOrder" parameterType="com.quming.entity.Order" useGeneratedKeys="true" keyProperty="orderId">
+        insert into qm_t_order (order_id ,order_state,first_name ,sex ,birthday ,born_address ,father ,mother ,brother_and_sister ,
+        name_num ,display_word ,phone ,email ,create_time ,pay_time ,send_time ,update_time ,deal_time,
+        pay_amount, cost_amount)
+        values (#{orderId} ,#{orderState},#{firstName} ,#{sex} ,#{birthday} ,#{bornAddress} ,#{father} ,#{mother} ,#{brotherAndSister} ,
+        #{nameNum} ,#{displayWord} ,#{phone} ,#{email} ,now() ,#{payTime} ,#{sendTime} ,now() ,#{dealTime},
+        #{payAmount}, #{costAmount})
+    </insert>
 
     <select id="selectAllOrder" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
         FROM qm_t_order
     </select>
+
+    <select id="selectOrderById" resultMap="BaseResultMap" >
+        select <include refid="Base_Column_List"/>
+        from qm_t_order where order_id=#{orderId}
+    </select>
+
+    <update id="updateOrderStateById" parameterType="com.quming.entity.Order">
+        update qm_t_order set order_state=#{orderState} where order_id=#{orderId}
+    </update>
 </mapper>

@@ -1,4 +1,5 @@
 package com.quming.entity;
+import	java.math.BigDecimal;
 
 import org.springframework.stereotype.Component;
 
@@ -8,9 +9,10 @@ import java.util.Date;
 /**
  * 订单实体
  */
-public class Order implements Serializable {
+public class Order implements Serializable{
 
-    private static final long serialVersionUID = -1419631441080310078L;
+
+    private static final long serialVersionUID = 8975418416516509605L;
 
     private Long orderId;
 
@@ -20,7 +22,7 @@ public class Order implements Serializable {
 
     private Integer sex;
 
-    private String birthday;
+    private Date birthday;
 
     private String bornAddress;
 
@@ -42,9 +44,15 @@ public class Order implements Serializable {
 
     private Date payTime;
 
+    private Date dealTime;
+
     private Date sendTime;
 
     private Date updateTime;
+
+    private BigDecimal payAmount;
+
+    private BigDecimal costAmount;
 
     public Long getOrderId() {
         return orderId;
@@ -78,11 +86,11 @@ public class Order implements Serializable {
         this.sex = sex;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -182,6 +190,30 @@ public class Order implements Serializable {
         this.sendTime = sendTime;
     }
 
+    public Date getDealTime() {
+        return dealTime;
+    }
+
+    public void setDealTime(Date dealTime) {
+        this.dealTime = dealTime;
+    }
+
+    public BigDecimal getPayAmount() {
+        return payAmount;
+    }
+
+    public void setPayAmount(BigDecimal payAmount) {
+        this.payAmount = payAmount;
+    }
+
+    public BigDecimal getCostAmount() {
+        return costAmount;
+    }
+
+    public void setCostAmount(BigDecimal costAmount) {
+        this.costAmount = costAmount;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -200,8 +232,11 @@ public class Order implements Serializable {
                 ", email='" + email + '\'' +
                 ", createTime=" + createTime +
                 ", payTime=" + payTime +
+                ", dealTime=" + dealTime +
                 ", sendTime=" + sendTime +
                 ", updateTime=" + updateTime +
+                ", payAmount=" + payAmount +
+                ", costAmount=" + costAmount +
                 '}';
     }
 }
