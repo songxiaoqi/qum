@@ -16,7 +16,7 @@ public class QuMingHomeController {
 
     @RequestMapping(value="/qumingindex",method = {RequestMethod.GET})
     public ModelAndView qumingIndex(){
-        return new ModelAndView("index");
+        return new ModelAndView("hello");
     }
 
     @RequestMapping(value="/index",method = {RequestMethod.GET,RequestMethod.POST})
