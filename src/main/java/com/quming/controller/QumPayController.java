@@ -30,7 +30,7 @@ public class QumPayController {
 
     @RequestMapping(value="/nativePay",method = {RequestMethod.POST,RequestMethod.GET})
     public Object nativePay(Order order){
-        PageHelper.startPage(1,5);//这行是重点，表示从pageNum页开始，每页pageSize条数据
+        PageHelper.startPage(1,5);
         List<Order> list = orderService.selectAllOrder();
         PageInfo<Order> pageInfo = new PageInfo<Order>(list);
         return pageInfo;
