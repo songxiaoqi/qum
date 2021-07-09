@@ -1,7 +1,6 @@
 package com.quming.config;
 
 import org.springframework.beans.BeansException;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -30,8 +29,8 @@ public class ThymeleafConfig implements ApplicationContextAware {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         //设置spring的上下文
         templateResolver.setApplicationContext(this.applicationContext);
-        templateResolver.setPrefix("");
-        templateResolver.setSuffix("");
+        templateResolver.setPrefix("/WEB-INF/templates/");
+        templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
         templateResolver.setCacheable(true);
         return templateResolver;
