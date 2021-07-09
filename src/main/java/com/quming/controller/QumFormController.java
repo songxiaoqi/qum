@@ -28,7 +28,7 @@ public class QumFormController {
     @RequestMapping(value="/unborn",method = {RequestMethod.POST,RequestMethod.GET})
     public Object unborn(){
         Order order = new Order();
-        order.setOrderId(00000001l);
+        order.setOrderId(00000001L);
         order.setOrderState(1);
         return order;
     }
