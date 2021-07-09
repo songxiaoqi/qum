@@ -18,6 +18,18 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 
 import java.io.IOException;
 
+/**
+ * 3.规则引擎的应用场景
+ * 业务规则复杂，且经常变动。
+ *
+ * （1）风险控制系统--风险贷款、风险评估
+ *
+ * （2）反欺诈项目--银行贷款、征信验证
+ *
+ * （3）决策平台系统--财务计算
+ *
+ * （4）促销平台系统--满减、打折、加价购
+ */
 @Configuration
 public class DroolsConfig {
 
